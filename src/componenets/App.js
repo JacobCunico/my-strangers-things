@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Register } from "./";
 
 
 function App() {
+    const [token, setToken] = useState('');
+
+    console.log(token);
+    
     return (
         <div>
-            <Register />
+            <Register setToken={setToken} />
         </div>
         )
     }
