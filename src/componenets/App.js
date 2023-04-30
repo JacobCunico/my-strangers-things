@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Register, Posts, Login } from "./";
+import { Register, Posts, Login, CreatePost } from "./";
 import { fetchPosts } from '../ajax-requests';
 
 
@@ -44,6 +44,10 @@ function App() {
                 <Route 
                     path='/register' 
                     element={<Register setToken={setToken} />}
+                />
+                <Route 
+                    path='/create-post' 
+                    element={<CreatePost />}
                 />
             </Routes>
         </div>

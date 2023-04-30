@@ -4,8 +4,6 @@ import { App } from './componenets';
 
 const root = createRoot(document.querySelector('#app'));
 
-root.render(
-<BrowserRouter>
+root.render(<BrowserRouter>
 <App />
-</BrowserRouter>
-);
+</BrowserRouter>);
