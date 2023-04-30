@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Register, Posts, Login, CreatePost } from "./";
+import { Register, Posts, Login, CreatePost, Nav } from "./";
 import { fetchPosts } from '../ajax-requests';
 
 
@@ -32,6 +32,7 @@ function App() {
 
     return (
         <div>
+            <Nav setToken={setToken} />
             <Routes>
                 <Route 
                     path='/' 
@@ -39,7 +40,7 @@ function App() {
                 />
                   <Route 
                     path='/login' 
-                    element={<Login setToken={setToken}/>}
+                    element={<Login setToken={setToken} />}
                 />
                 <Route 
                     path='/register' 
@@ -47,7 +48,7 @@ function App() {
                 />
                 <Route 
                     path='/create-post' 
-                    element={<CreatePost token={token} getPosts={getPosts}/>}
+                    element={<CreatePost token={token} getPosts={getPosts} />}
                 />
             </Routes>
         </div>

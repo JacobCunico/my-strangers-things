@@ -75,6 +75,7 @@ export const makePost = async (post, token) => {
     console.log(result);
     return result
   } catch (err) {
+    alert(err.message);
     console.error(err);
   }
 }
