@@ -7,7 +7,7 @@ function Posts({ posts }) {
     {
         posts && posts.map((posts) => {
             return (
-                <p key={posts._id}>{posts.title}</p>
+                <p key={posts._id}>Title: {posts.title} Description: {posts.description}</p>
             )
         })  
     }

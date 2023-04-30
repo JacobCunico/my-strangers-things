@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import { Register, Posts } from "./";
+import { Register, Posts, Login } from "./";
 import { fetchPosts } from '../ajax-requests';
 
 
@@ -29,7 +29,6 @@ function App() {
         getPosts();
     }, [token])
 
-    console.log(posts);
 
     return (
         <div>
@@ -37,6 +36,10 @@ function App() {
                 <Route 
                     path='/posts' 
                     element={<Posts posts={posts} />}
+                />
+                  <Route 
+                    path='/login' 
+                    element={<Login setToken={setToken}/>}
                 />
                 <Route 
                     path='/register' 
