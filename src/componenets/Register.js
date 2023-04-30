@@ -11,7 +11,7 @@ function Register({ setToken }) {
         
         const results = await registerUser(user);
 
-        console.log(results);
+        //console.log(results);
 
         if (results.success) {
             setToken(results.data.token);

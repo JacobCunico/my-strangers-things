@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Register, Posts, Login, CreatePost, Nav } from "./";
 import { fetchPosts, myData } from '../ajax-requests';
 
@@ -10,6 +10,7 @@ function App() {
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    const navigate = useNavigate();
 
     function tokenCheck() {
     if (window.localStorage.getItem('token')) {
@@ -17,7 +18,7 @@ function App() {
     }}
 
     async function getPosts() {
-        const results = await fetchPosts();
+        const results = await fetchPosts(token);
         if (results.success) {
             setPosts(results.data.posts);
         }
@@ -63,7 +64,7 @@ function App() {
                 />
                   <Route 
                     path='/login' 
-                    element={<Login setToken={setToken} />}
+                    element={<Login setToken={setToken} navigate={navigate} />}
                 />
                 <Route 
                     path='/register' 

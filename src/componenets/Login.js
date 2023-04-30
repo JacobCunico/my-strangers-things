@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login } from '../ajax-requests';
 
-function Login({ setToken }) {
+function Login({ setToken, navigate }) {
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
     
@@ -14,6 +14,7 @@ function Login({ setToken }) {
             if (results.success) {
                 setToken(results.data.token);
                 window.localStorage.setItem('token', results.data.token);
+                navigate('/');
                 alert('Login Successfull');
             } else {alert('incorrect Username or Password')};
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { makePost } from "../ajax-requests";
-import { Link } from 'react-router-dom';
+import { makePost } from "../ajax-requests"; 
 
     function CreatePost({ token, getPosts }) {
     const [title, setTitle] = useState('');
@@ -9,13 +8,16 @@ import { Link } from 'react-router-dom';
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const post = {title, description, price};
+        const post = {title, description, price}
 
         const results = await makePost(post, token)
 
+
         if (results.succcess) {
-            getPosts();
-        }
+            getPosts()
+        } else (
+            getPosts()
+        )
     }
 
     return (
@@ -39,7 +41,6 @@ import { Link } from 'react-router-dom';
                 onChange={(event) => {setPrice(event.target.value)}}
             />
             <button type='submit'>Create Post</button>
-            <Link to='/'>Go Home</Link>
         </form>
     )
 }
