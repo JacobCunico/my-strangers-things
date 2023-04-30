@@ -34,7 +34,7 @@ function App() {
         <div>
             <Routes>
                 <Route 
-                    path='/posts' 
+                    path='/' 
                     element={<Posts posts={posts} />}
                 />
                   <Route 
@@ -47,7 +47,7 @@ function App() {
                 />
                 <Route 
                     path='/create-post' 
-                    element={<CreatePost />}
+                    element={<CreatePost token={token} getPosts={getPosts}/>}
                 />
             </Routes>
         </div>
