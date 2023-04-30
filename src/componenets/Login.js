@@ -15,7 +15,7 @@ function Login({ setToken }) {
                 setToken(results.data.token);
                 window.localStorage.setItem('token', results.data.token);
                 alert('Login Successfull');
-            }
+            } else {alert('incorrect Username or Password')};
 
         }
     

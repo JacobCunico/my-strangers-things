@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Register, Posts, Login, CreatePost, Nav } from "./";
-import { fetchPosts } from '../ajax-requests';
+import { fetchPosts, myData } from '../ajax-requests';
 
 
 function App() {
     const [token, setToken] = useState('');
     const [posts, setPosts] = useState([]);
+    const [user, setUser] = useState({});
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
     function tokenCheck() {
@@ -21,18 +23,39 @@ function App() {
         }
     }
 
+    async function getMyData() {
+        const results = await myData(token);
+        if (results.success) {
+            setUser(results.data)
+        }
+    }
+
     useEffect(() => {
         tokenCheck();
     }, [])
 
     useEffect(() => {
         getPosts();
+        if (token) {
+            getMyData();
+            setIsLoggedIn(true);
+        }
     }, [token])
+
+    if (isLoggedIn) {
+        console.log('user is logged in')
+    } else ( 
+        console.log('user is logged out')
+    )
 
 
     return (
         <div>
-            <Nav setToken={setToken} />
+            <Nav 
+            setToken={setToken} 
+            setIsLoggedIn={setIsLoggedIn} 
+            isLoggedIn={isLoggedIn} 
+            />
             <Routes>
                 <Route 
                     path='/' 
