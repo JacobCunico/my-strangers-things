@@ -12,19 +12,23 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn }) {
     }
 
     return(
-        <nav>
+        <nav style={{backgroundColor: "lightblue",  
+        border: "solid black", 
+        display: "flex",
+        justifyContent: "space-around"
+        }}>
             <h1>Stranger's things</h1>
-            <button><Link to= '/'>Home</Link></button>
+            <button style={{padding: "1px 40px", backgroundColor: "lightblue", fontSize: "20px"}}><Link to= '/'>Home</Link></button>
             {
                 isLoggedIn ? (
                     <>
-                    <button onClick={logout}>Log Out</button>
-                    <button><Link to='/create-post'>Create Post</Link></button>
+                    <button  style={{padding: "1px 40px", backgroundColor: "lightblue", fontSize: "20px"}} onClick={logout}>Log Out</button>
+                    <button style={{padding: "1px 40px", backgroundColor: "lightblue", fontSize: "20px"} }><Link to='/create-post'>Create Post</Link></button>
                     </>
                 ) : (
                     <>
-                    <button><Link to='/login'>Login</Link></button>
-                    <button><Link to='/Register'>Register</Link></button>
+                    <button style={{padding: "1px 40px", backgroundColor: "lightblue", fontSize: "20px"}}><Link to='/login'>Login</Link></button>
+                    <button style={{padding: "1px 40px", backgroundColor: "lightblue", fontSize: "20px"}}><Link to='/Register'>Register</Link></button>
                     </>
                 )
             }
