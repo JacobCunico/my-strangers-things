@@ -5,10 +5,12 @@ import { makePost } from "../ajax-requests";
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+    const [location, setLocation] = useState('');
+    const [willDeliver, setWillDeliver] = useState('');
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const post = {title, description, price}
+        const post = {title, description, price, location, willDeliver}
 
         const results = await makePost(post, token)
 
@@ -39,6 +41,18 @@ import { makePost } from "../ajax-requests";
                 placeholder="Enter Price"
                 value={price}
                 onChange={(event) => {setPrice(event.target.value)}}
+            />
+            <input
+                type='text'
+                placeholder="Enter Location"
+                value={location}
+                onChange={(event) => {setLocation(event.target.value)}}
+            />
+            <input
+                type='checkbox'
+                name="delivery"
+                checked={willDeliver}
+                onChange={(event) => {setWillDeliver(event.target.value)}}
             />
             <button type='submit'>Create Post</button>
         </form>

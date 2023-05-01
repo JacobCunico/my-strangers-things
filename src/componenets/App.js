@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { Register, Posts, Login, CreatePost, Nav } from "./";
+import { Register, Posts, Login, CreatePost, Nav, UpdatePost } from "./";
 import { fetchPosts, myData } from '../ajax-requests';
 
 
@@ -73,6 +73,10 @@ function App() {
                 <Route 
                     path='/create-post' 
                     element={<CreatePost token={token} getPosts={getPosts} />}
+                />
+                <Route
+                    path='/update-post/:postId'
+                    element={<UpdatePost posts={posts} token={token} getPosts={getPosts}/>}
                 />
             </Routes>
         </div>

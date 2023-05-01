@@ -11,8 +11,6 @@ function Register({ setToken }) {
         
         const results = await registerUser(user);
 
-        //console.log(results);
-
         if (results.success) {
             setToken(results.data.token);
             window.localStorage.setItem('token', results.data.token);

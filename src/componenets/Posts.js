@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
+import { Link } from 'react-router-dom';
 
-function Posts({ posts, deletePost }) {
+function Posts({ posts }) {
 
     return (
     <>
@@ -11,11 +12,12 @@ function Posts({ posts, deletePost }) {
                 {
                     post.isAuthor ? (
                         <>
-                        <p>Title: {post.title} Description: {post.description} Price: {post.price}</p>
-                        <button onClick={deletePost}>Delete Post</button>
+                        <p>Title: {post.title} Description: {post.description} Price: {post.price} location: {post.location} Delivery: {post.willDeliver}</p>
+                        <button>Delete Post</button>
+                        <button><Link to={`/update-post/${post._id}`} >Edit Post</Link></button>
                         </>
                     ) : (
-                        <p>Title: {post.title} Description: {post.description} Price: {post.price}</p>
+                        <p>Title: {post.title} Description: {post.description} Price: {post.price} location: {post.location} Delivery: {post.willDeliver}</p>
                     )
                 }
                 </Fragment>
